@@ -1,28 +1,48 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        
-        <div class="form">
-            <h1>Criador de QR Code</h1>
-        <form>
-            <input type="url" id="website" name="website" placeholder="https://arthurrodrigomarques.github.io/" required />
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criador de QR Code</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="form">
+        <h1>Criador de QR Code</h1>
+        <form id="qr-form">
+            <input type="text" id="website" name="website" placeholder="https://exemplo.com ou texto" required />
+            
+            <button type="submit" id="generate-button">Gerar QR Code</button>
 
             <div id="qrcode-container">
                 <div id="qrcode" class="qrcode"></div>
+
+                <div class="download-section">
+                    <div class="control-group">
+                        <label for="resolution-select">Resolução:</label>
+                        <select id="resolution-select">
+                            <option value="1024" selected>1024 × 1024 px (Alta Resolução)</option>
+                            <option value="2048">2048 × 2048 px (Ultra HD - Gráfica)</option>
+                            <option value="512">512 × 512 px (Padrão - Web)</option>
+                        </select>
+                    </div>
+
+                    <div class="control-group">
+                        <label for="format-select">Formato:</label>
+                        <select id="format-select">
+                            <option value="png" selected>PNG (Sem perdas)</option>
+                            <option value="jpeg">JPEG (Fundo branco)</option>
+                        </select>
+                    </div>
+
+                    <button type="button" id="download-button" onclick="downloadQRCode()">Baixar QR Code</button>
+                </div>
             </div>
-            
-            <button type="button" onclick="generateQRCode()">Gerador de QR Code</button>
-            
         </form>
     </div>
-    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
